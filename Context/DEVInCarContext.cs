@@ -16,11 +16,11 @@ namespace DEVinCar.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Sale> Sales { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Caminhonete>().HasData(VehiclesSeed.CaminhoneteSeeder);
-        //    modelBuilder.Entity<Carro>().HasData(VehiclesSeed.CarroSeeder);
-        //    modelBuilder.Entity<MotoTriciclo>().HasData(VehiclesSeed.MotoTricicloSeeder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Caminhonete>().HasData(VehiclesSeed.CaminhoneteSeeder);
+            modelBuilder.Entity<Carro>().HasData(VehiclesSeed.CarroSeeder);
+            modelBuilder.Entity<MotoTriciclo>().HasData(VehiclesSeed.MotoTricicloSeeder);
+        }
     }
 }

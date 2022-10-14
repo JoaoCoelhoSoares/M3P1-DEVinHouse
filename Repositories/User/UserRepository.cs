@@ -9,17 +9,21 @@ namespace DEVinCar.Repositories
         {
             new User{
                 Id = 1,
-                Nome = "Yan Esteves",
-                Email = "yan.m.esteves@gmail.com",
-                Password="123456",
-                // Claims = new Claim[] { new Claim(ClaimTypes.Role, "superadmin") }
+                Nome = "Yan",
+                Email = "yan@email.com",
+                Password="123456"
             },
             new User{
                 Id = 2,
                 Nome = "Marco",
-                Email = "marco@gmail.com",
-                Password = "abcdef",
-                // Claims = new Claim[] { new Claim(ClaimTypes.Role, "user") }
+                Email = "marco@email.com",
+                Password = "abcdef"
+            },
+            new User{
+                Id = 3,
+                Nome = "Joao",
+                Email = "joao@email.com",
+                Password = "123123"
             }
         };
 

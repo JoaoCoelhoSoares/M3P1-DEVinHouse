@@ -10,14 +10,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
-// using System.Security.Claims;
 
 namespace DEVinCar.GraphQL.Mutations
 {
-    //public class LoginMutation
-    //{
-    //}
-
     public class LoginInput
     {
         public string Email { get; set; }
@@ -42,7 +37,6 @@ namespace DEVinCar.GraphQL.Mutations
                     audience: tokenSettings.Value.Audience,
                     signingCredentials: credentials,
                     expires: DateTime.Now.AddMinutes(20)
-                // claims: ...
                 );
 
                 string token = new JwtSecurityTokenHandler().WriteToken(jwtToken);

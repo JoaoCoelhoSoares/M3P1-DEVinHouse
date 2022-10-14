@@ -23,7 +23,7 @@ namespace DEVinCar.Repositories
             switch (idVehicle)
             {
                 case string s when s.Contains("CAR"):
-                    var carro = (Carro)_context.Carros.SingleOrDefault(v => v.Id.Contains(idVehicle));
+                    var carro = _context.Carros.SingleOrDefault(v => v.Id.Contains(idVehicle));
                     carro.CpfComprador = cpfComprador;
                     vehicleValue = carro.Valor;
                     _context.Update(carro);
@@ -61,26 +61,23 @@ namespace DEVinCar.Repositories
 
         public ISale GetHigherSale(VehicleType? vehicleType)
         {
-            if (vehicleType == null) return _sales.MaxBy(s => s.Valor);
-            
-            ISale higherSale = _sales.Where(s => s.VehicleType == vehicleType).MaxBy(s => s.Valor);
+            if (vehicleType == null) return _context.Sales.OrderByDescending(s => s.Valor).First() ;
+            ISale higherSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderByDescending(s => s.Valor).First();
             return higherSale;
         }
 
         public ISale GetLowerSale(VehicleType? vehicleType)
         {
-            
-            if (vehicleType == null) return _sales.MinBy(s => s.Valor);
 
-            ISale lowerSale = _sales.Where(s => s.VehicleType == vehicleType).MinBy(s => s.Valor);
-            if (lowerSale == null) return null;
+            if (vehicleType == null) return _context.Sales.OrderBy(s => s.Valor).First();
+            ISale lowerSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderBy(s => s.Valor).First();
             return lowerSale;
         }
 
         public IEnumerable<ISale> GetSales(VehicleType? vehicleType)
         {
-            if(vehicleType == null) return _sales;
-            IEnumerable<ISale> vehicleList = _sales.Where(s => s.VehicleType == vehicleType);
+            if(vehicleType == null) return _context.Sales.ToList();
+            IEnumerable<ISale> vehicleList = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).ToList();
             return vehicleList;
         }
     }

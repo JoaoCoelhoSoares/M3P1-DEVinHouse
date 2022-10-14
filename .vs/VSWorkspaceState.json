@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\GraphQL",
-    "\\GraphQL\\Mutations",
-    "\\GraphQL\\Queries",
-    "\\GraphQL\\Subscriptions"
+    "\\Repositories",
+    "\\Repositories\\User"
   ],
   "SelectedNode": "\\DEVinCar.sln",
   "PreviewInSolutionExplorer": false

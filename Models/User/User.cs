@@ -1,5 +1,4 @@
 ﻿using HotChocolate.AspNetCore.Authorization;
-// using System.Security.Claims;
 
 namespace DEVinCar.Models
 {
@@ -13,9 +12,6 @@ namespace DEVinCar.Models
 
         [Authorize]
         public string? Password { get; set; }
-        // [Authorize(Roles = new[] { "Administrator" })]
-
-        // [Authorize]
-        // public Claim[]? Claims { get; set; }   
     }
 }
+

@@ -13,6 +13,8 @@ namespace DEVinCar.GraphQL.Mutations
     public class CreateVehiclesMutations
     {
         [GraphQLName("NovoCarro")]
+
+        [Authorize]
         public async Task<CreateCarroDTO> CreateCarro(
             CreateCarroDTO input, [Service] DEVInCarContext context,
             [Service] ITopicEventSender eventSender)
@@ -31,6 +33,7 @@ namespace DEVinCar.GraphQL.Mutations
         }
 
         [GraphQLName("NovaCaminhonete")]
+        [Authorize]
         public async Task<CreateCaminhoneteDTO> CreateCaminhonete(
             CreateCaminhoneteDTO input, [Service] DEVInCarContext context,
             [Service] ITopicEventSender eventSender)
@@ -49,6 +52,7 @@ namespace DEVinCar.GraphQL.Mutations
         }
 
         [GraphQLName("NovaMotoTriciclo")]
+        [Authorize]
         public async Task<CreateMotoTricicloDTO> CreateMotoTriciclo(
             CreateMotoTricicloDTO input, [Service] DEVInCarContext context,
             [Service] ITopicEventSender eventSender)
