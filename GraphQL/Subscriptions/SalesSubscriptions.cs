@@ -12,10 +12,10 @@ namespace DEVinCar.GraphQL.Subscriptions
 
         [Subscribe]
         [GraphQLName("VeiculoVendido")]
-        public Sale VehicleSale([EventMessage] Sale message) => message;
+        public CreateSaleDTO VehicleSale([EventMessage] CreateSaleDTO message) => message;
 
         [Subscribe]
         [GraphQLName("VeiculoVendidoPorTipo")]
-        public Sale VehicleTypeSale([Topic] VehicleType? tipo, [EventMessage] Sale message) => message;
+        public CreateSaleDTO VehicleTypeSale([Topic] VehicleType? tipo, [EventMessage] CreateSaleDTO message) => message;
     }
 }

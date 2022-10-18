@@ -4,7 +4,7 @@ namespace DEVinCar.Repositories
 {
     public interface ISaleRepository
     {
-        Task<Sale> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda);
+        Task<CreateSaleDTO> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda);
 
         IEnumerable<ISale> GetSales(VehicleType? vehicleType);
 
