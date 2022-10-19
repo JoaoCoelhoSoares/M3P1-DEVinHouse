@@ -61,7 +61,7 @@ namespace DEVinCar.Repositories
                     break;
             }
 
-            if(vehicle is not null) {
+            if(vehicleValue > 0) {
                 Sale newSale = new Sale(idVehicle, dataVenda, cpfComprador, vehicleValue, vehicleType);
                 CreateSaleDTO createSale = new (newSale, vehicle);
                 _context.Sales.Add(newSale);

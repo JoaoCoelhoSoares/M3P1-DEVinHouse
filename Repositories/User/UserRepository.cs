@@ -1,11 +1,17 @@
 ﻿using DEVinCar.Models;
 using DEVinCar.GraphQL.Mutations;
+using DEVinCar.Context;
 
 namespace DEVinCar.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private List<User> _users = new List<User>
+
+        public DEVInCarContext _context;
+
+        public IList<User> _users = new List<User> { };
+
+        private List<User> users = new List<User>
         {
             new User{
                 Id = 1,
@@ -27,14 +33,14 @@ namespace DEVinCar.Repositories
             }
         };
 
-        public void AddUser(User user)
+        public UserRepository(DEVInCarContext context)
         {
-            _users.Add(user);
+            _context = context;
         }
 
         public User? AuthUser(LoginInput login)
         {
-            var user = _users.Where(_ => _.Email.ToLower() == login.Email.ToLower() &&
+            var user = _context.Users.Where(_ => _.Email.ToLower() == login.Email.ToLower() &&
                         _.Password == login.Password).FirstOrDefault();
 
             return user;
@@ -42,13 +48,14 @@ namespace DEVinCar.Repositories
 
         public User GetUser(int id)
         {
-            return _users.Single(q => q.Id == id);
+            return _context.Users.Single(u => u.Id == id);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _users.Where(_ => _.Email.Contains(""));
+            return _context.Users.ToList();
         }
+
     }
 }
 

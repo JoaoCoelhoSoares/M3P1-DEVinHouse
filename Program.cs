@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-
+using DEVinCar.GraphQL.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +48,11 @@ builder.Services
     .AddType<Sale>()
 
     .AddInMemorySubscriptions()
-    .AddApolloTracing();
+    .AddApolloTracing()
+
+    .AddSocketSessionInterceptor<SubscriptionAuthMiddleware>();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
 builder.Services.AddAuthorization();

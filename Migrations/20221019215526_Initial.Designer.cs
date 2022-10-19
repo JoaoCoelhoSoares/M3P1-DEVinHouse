@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DEVinCar.Migrations
 {
     [DbContext(typeof(DEVInCarContext))]
-    [Migration("20221012214202_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221019215526_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,11 +81,11 @@ namespace DEVinCar.Migrations
                             CapacidadeCacamba = 300,
                             Cor = "Verde",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 401, DateTimeKind.Local).AddTicks(5919),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 949, DateTimeKind.Local).AddTicks(6523),
                             Gasolisa = false,
                             Nome = "F1000",
-                            NumeroChassi = "T0WYUN9A2FZVH2SK4",
-                            Placa = "EJE-0043",
+                            NumeroChassi = "LAL97ZP13DWDU3FRW",
+                            Placa = "YMP-1578",
                             Portas = 2,
                             Potencia = 1000,
                             Tipo = "Caminhonete",
@@ -97,11 +97,11 @@ namespace DEVinCar.Migrations
                             CapacidadeCacamba = 250,
                             Cor = "Cinza",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 401, DateTimeKind.Local).AddTicks(8682),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 949, DateTimeKind.Local).AddTicks(9394),
                             Gasolisa = false,
                             Nome = "F500",
-                            NumeroChassi = "09VY8CJ0W0M0NK9PM",
-                            Placa = "VXO-5450",
+                            NumeroChassi = "JJGB28NVX7NNL0BDB",
+                            Placa = "WNX-5313",
                             Portas = 2,
                             Potencia = 500,
                             Tipo = "Caminhonete",
@@ -113,11 +113,11 @@ namespace DEVinCar.Migrations
                             CapacidadeCacamba = 250,
                             Cor = "Preto",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 401, DateTimeKind.Local).AddTicks(8722),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 949, DateTimeKind.Local).AddTicks(9425),
                             Gasolisa = true,
                             Nome = "F250",
-                            NumeroChassi = "623MP639CG95VERS9",
-                            Placa = "KHH-2000",
+                            NumeroChassi = "Z1X6JT9TYYWC54APJ",
+                            Placa = "RUK-3804",
                             Portas = 2,
                             Potencia = 250,
                             Tipo = "Caminhonete",
@@ -178,11 +178,11 @@ namespace DEVinCar.Migrations
                             Id = "CAR1",
                             Cor = "Cinza",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 397, DateTimeKind.Local).AddTicks(2485),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 923, DateTimeKind.Local).AddTicks(4451),
                             Gasolisa = false,
                             Nome = "Ford Focus",
-                            NumeroChassi = "F9DNMSZH0XX30N91K",
-                            Placa = "KAD-1316",
+                            NumeroChassi = "ETSXA0PA6X2VSNT94",
+                            Placa = "DXW-3713",
                             Portas = 4,
                             Potencia = 250,
                             Tipo = "Carro",
@@ -193,11 +193,11 @@ namespace DEVinCar.Migrations
                             Id = "CAR2",
                             Cor = "Branco",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 401, DateTimeKind.Local).AddTicks(1842),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 949, DateTimeKind.Local).AddTicks(2472),
                             Gasolisa = false,
                             Nome = "Punto",
-                            NumeroChassi = "MB47871CMDEBMSF5Y",
-                            Placa = "TPD-3335",
+                            NumeroChassi = "FMHFG5BV3JSY06AS2",
+                            Placa = "PYG-8555",
                             Portas = 2,
                             Potencia = 350,
                             Tipo = "Carro",
@@ -208,11 +208,11 @@ namespace DEVinCar.Migrations
                             Id = "CAR3",
                             Cor = "Azul",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 401, DateTimeKind.Local).AddTicks(1883),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 949, DateTimeKind.Local).AddTicks(2616),
                             Gasolisa = false,
                             Nome = "Gol",
-                            NumeroChassi = "C9GJJ18EJU7P3HMEG",
-                            Placa = "WRE-7266",
+                            NumeroChassi = "UTGR9WV77HUNAPBA0",
+                            Placa = "HML-3163",
                             Portas = 4,
                             Potencia = 200,
                             Tipo = "Carro",
@@ -270,10 +270,10 @@ namespace DEVinCar.Migrations
                             Id = "MOT1",
                             Cor = "Vermelho",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 402, DateTimeKind.Local).AddTicks(1475),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 950, DateTimeKind.Local).AddTicks(2193),
                             Nome = "CG150",
-                            NumeroChassi = "VSWZMHBLVUYUZ3XJR",
-                            Placa = "ZDO-8508",
+                            NumeroChassi = "HA36SE1RD8RLUVKTP",
+                            Placa = "LKV-1418",
                             Potencia = 150,
                             Rodas = 2,
                             Tipo = "MotoTriciclo",
@@ -284,10 +284,10 @@ namespace DEVinCar.Migrations
                             Id = "MOT2",
                             Cor = "Branco",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 402, DateTimeKind.Local).AddTicks(4344),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 950, DateTimeKind.Local).AddTicks(4897),
                             Nome = "Honda Biz",
-                            NumeroChassi = "B2R7SZB3J4V176YL5",
-                            Placa = "RPA-8534",
+                            NumeroChassi = "X15GUZEVBHXAMJB1D",
+                            Placa = "ZJD-6083",
                             Potencia = 100,
                             Rodas = 2,
                             Tipo = "MotoTriciclo",
@@ -298,15 +298,44 @@ namespace DEVinCar.Migrations
                             Id = "MOT3",
                             Cor = "Azul",
                             CpfComprador = 0L,
-                            DataFabricacao = new DateTime(2022, 10, 11, 18, 42, 1, 402, DateTimeKind.Local).AddTicks(4431),
+                            DataFabricacao = new DateTime(2022, 10, 18, 18, 55, 25, 950, DateTimeKind.Local).AddTicks(5003),
                             Nome = "Triciclo 3E",
-                            NumeroChassi = "39T96H4FR7W9D3F9A",
-                            Placa = "XKM-0053",
+                            NumeroChassi = "60A8JUCSADY6GWAGP",
+                            Placa = "SSO-0834",
                             Potencia = 125,
                             Rodas = 3,
                             Tipo = "MotoTriciclo",
                             Valor = 11500m
                         });
+                });
+
+            modelBuilder.Entity("DEVinCar.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<long>("CpfComprador")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DataVenda")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("VehicleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("VehicleType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("DEVinCar.Models.User", b =>
@@ -329,6 +358,29 @@ namespace DEVinCar.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "yan@email.com",
+                            Nome = "Yan",
+                            Password = "123456"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "joao@email.com",
+                            Nome = "Joao",
+                            Password = "123123"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "support@email.com",
+                            Nome = "Support",
+                            Password = "123123"
+                        });
                 });
 #pragma warning restore 612, 618
         }

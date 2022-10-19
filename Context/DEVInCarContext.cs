@@ -21,6 +21,7 @@ namespace DEVinCar.Context
             modelBuilder.Entity<Caminhonete>().HasData(VehiclesSeed.CaminhoneteSeeder);
             modelBuilder.Entity<Carro>().HasData(VehiclesSeed.CarroSeeder);
             modelBuilder.Entity<MotoTriciclo>().HasData(VehiclesSeed.MotoTricicloSeeder);
+            modelBuilder.Entity<User>().HasData(UsersSeeds.UserSeeder);            
         }
     }
 }

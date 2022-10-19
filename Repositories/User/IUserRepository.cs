@@ -7,8 +7,6 @@ namespace DEVinCar.Repositories
     {
         IEnumerable<User> GetUsers();
 
-        void AddUser(User user);
-
         User GetUser(int id);
 
         User? AuthUser(LoginInput login);

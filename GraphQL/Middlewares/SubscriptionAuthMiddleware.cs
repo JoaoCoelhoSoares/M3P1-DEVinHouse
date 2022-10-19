@@ -1,0 +1,84 @@
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Principal;
+using HotChocolate.AspNetCore;
+using HotChocolate.AspNetCore.Subscriptions;
+using HotChocolate.AspNetCore.Subscriptions.Messages;
+using HotChocolate.Execution;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+namespace DEVinCar.GraphQL.Middlewares
+{
+    public static class ValidateJWT
+    {
+        public static bool ValidateToken(string authToken)
+        {
+            var key = "NewKeyDevinCarM3P1zCGXHDGqEdDSqxQaRchb";
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidIssuer = "localhost:7049",
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = "DEVinCar",
+                IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(key)
+            ),
+            };
+
+            SecurityToken validatedToken;
+            try
+            {
+                IPrincipal principal = tokenHandler.ValidateToken(authToken, validationParameters, out validatedToken);
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
+
+    public class SubscriptionAuthMiddleware : ISocketSessionInterceptor
+    {
+        public async ValueTask OnCloseAsync(ISocketConnection connection, CancellationToken cancellationToken) { }
+        public async ValueTask OnRequestAsync(ISocketConnection connection, IQueryRequestBuilder requestBuilder, CancellationToken cancellationToken) { }
+
+        /* We don't need the above two methods, just this one */
+        public async ValueTask<ConnectionStatus> OnConnectAsync(ISocketConnection connection, InitializeConnectionMessage message, CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Nas subscriptions (websocket), o campo payload pode receber o que seria os cabeçalhos nos métodos http/https.
+                // Com isso, capturo a propriedade Authorization e informo ser uma string, depois verifico se possui o Bearer antecedendo o token.
+                // E faço a validação do token em outra função.
+                var jwtHeader = message.Payload["authorization"] as string;
+
+                if (string.IsNullOrEmpty(jwtHeader) || !jwtHeader.StartsWith("Bearer "))
+                    return ConnectionStatus.Reject("Unauthorized");
+
+                var token = jwtHeader.Replace("Bearer ", "");
+
+                var response = ValidateJWT.ValidateToken(token);
+                Console.WriteLine($"Pode se conectar: {response}");
+                if (!response)
+                {
+                    return ConnectionStatus.Reject("Usuário sem autorização para se conectar ao websocket.");
+                }
+
+                // Adc o token ao HttpContext
+                connection.HttpContext.Request.Headers.Authorization = jwtHeader;
+
+                // Aceito a conexão websocket
+                return ConnectionStatus.Accept();
+            }
+            catch (Exception ex)
+            {
+                return ConnectionStatus.Reject("Usuário sem autorização para se conectar ao websocket.");
+            }
+        }
+    }
+}
