@@ -6,11 +6,9 @@ namespace DEVinCar.Models
     public interface IVehicle
     {
         public string Id { get; set; }
-        [Authorize]
         public string NumeroChassi { get; set; }
         public DateTime DataFabricacao { get; set; }
         public string Nome { get; set; }
-        [Authorize]
         public string Placa { get; set; }
         public decimal Valor { get; set; }
         public long CpfComprador { get; set; }

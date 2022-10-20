@@ -32,9 +32,10 @@ namespace DEVinCar.Repositories
                     if (vehicleById is not null) return vehicleById;
                     break;
                 default:
+                    throw new Exception("erro no id");
                     break;
             }
-             throw new Exception("erro no id");
+            return vehicleById;
         }
 
         public IEnumerable<IVehicle> GetVehicles(VehicleType? vehicleType)

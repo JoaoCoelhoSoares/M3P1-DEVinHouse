@@ -15,7 +15,7 @@ namespace DEVinCar.Repositories
             _context = context;
         }
 
-        public async Task<CreateSaleDTO> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda)
+        public async Task<SaleDTO> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda)
         {
             VehicleType vehicleType = VehicleType.Carro;
             decimal vehicleValue = 0;          
@@ -63,7 +63,7 @@ namespace DEVinCar.Repositories
 
             if(vehicleValue > 0) {
                 Sale newSale = new Sale(idVehicle, dataVenda, cpfComprador, vehicleValue, vehicleType);
-                CreateSaleDTO createSale = new (newSale, vehicle);
+                SaleDTO createSale = new (newSale, vehicle);
                 _context.Sales.Add(newSale);
                 await _context.SaveChangesAsync();
                 return createSale;
@@ -72,19 +72,72 @@ namespace DEVinCar.Repositories
             return null;
         }
 
-        public ISale GetHigherSale(VehicleType? vehicleType)
+        public SaleDTO GetHigherSale(VehicleType? vehicleType)
         {
-            if (vehicleType == null) return _context.Sales.OrderByDescending(s => s.Valor).First() ;
-            ISale higherSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderByDescending(s => s.Valor).First();
-            return higherSale;
+            ISale higherSale;
+            if (vehicleType == null)
+            {
+                higherSale = _context.Sales.OrderByDescending(s => s.Valor).First();
+            } else {
+                higherSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderByDescending(s => s.Valor).First();
+            }
+            IVehicle vehicleSale = null;
+
+            switch (higherSale.VehicleId)
+            {
+                case string s when s.Contains("CAR"):
+                    vehicleSale = _context.Carros.SingleOrDefault(v => v.Id.Contains(higherSale.VehicleId));
+
+                    break;
+                case string s when s.Contains("CAM"):
+                    vehicleSale = _context.Caminhonetes.SingleOrDefault(v => v.Id.Contains(higherSale.VehicleId));
+                  
+                    break;
+                case string s when s.Contains("MOT"):
+                    vehicleSale = _context.MotoTriciclos.SingleOrDefault(v => v.Id.Contains(higherSale.VehicleId));
+                   
+                    break;
+                default:
+                    break;
+            }
+
+            SaleDTO saleDTO = new((Sale)higherSale, vehicleSale);
+            return saleDTO;
         }
 
-        public ISale GetLowerSale(VehicleType? vehicleType)
+        public SaleDTO GetLowerSale(VehicleType? vehicleType)
         {
+            ISale lowerSale;
+            if (vehicleType == null)
+            {
+                lowerSale = _context.Sales.OrderBy(s => s.Valor).First();
+            }
+            else
+            {
+                lowerSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderBy(s => s.Valor).First();
+            }
+            IVehicle vehicleSale = null;
 
-            if (vehicleType == null) return _context.Sales.OrderBy(s => s.Valor).First();
-            ISale lowerSale = _context.Sales.Where(v => v.VehicleType.Equals(vehicleType)).OrderBy(s => s.Valor).First();
-            return lowerSale;
+            switch (lowerSale.VehicleId)
+            {
+                case string s when s.Contains("CAR"):
+                    vehicleSale = _context.Carros.SingleOrDefault(v => v.Id.Contains(lowerSale.VehicleId));
+
+                    break;
+                case string s when s.Contains("CAM"):
+                    vehicleSale = _context.Caminhonetes.SingleOrDefault(v => v.Id.Contains(lowerSale.VehicleId));
+
+                    break;
+                case string s when s.Contains("MOT"):
+                    vehicleSale = _context.MotoTriciclos.SingleOrDefault(v => v.Id.Contains(lowerSale.VehicleId));
+
+                    break;
+                default:
+                    break;
+            }
+
+            SaleDTO saleDTO = new((Sale)lowerSale, vehicleSale);
+            return saleDTO;
         }
 
         public IEnumerable<ISale> GetSales(VehicleType? vehicleType)

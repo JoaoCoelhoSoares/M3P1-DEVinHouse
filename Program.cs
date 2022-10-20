@@ -46,6 +46,9 @@ builder.Services
     .AddType<MotoTriciclo>()
     .AddType<User>()
     .AddType<Sale>()
+    .AddType<CarroViewModel>()
+    .AddType<CaminhoneteViewModel>()
+    .AddType<MotoTricicloViewModel>()
 
     .AddInMemorySubscriptions()
     .AddApolloTracing()

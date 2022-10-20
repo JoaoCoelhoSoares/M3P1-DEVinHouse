@@ -26,8 +26,9 @@ namespace DEVinCar.GraphQL.Mutations
 
             await context.SaveChangesAsync();
 
-            await eventSender.SendAsync(VehicleType.Carro, vehicle);
-            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicle).ConfigureAwait(false);
+            CarroViewModel vehicleviewModel = new(vehicle.Id, vehicle.NumeroChassi, vehicle.DataFabricacao, vehicle.Placa, vehicle.CpfComprador, vehicle.Nome, vehicle.Valor, vehicle.Cor, vehicle.Potencia, vehicle.Portas, vehicle.Gasolisa);
+            await eventSender.SendAsync(VehicleType.Carro, (IVehicle)vehicleviewModel);
+            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicleviewModel).ConfigureAwait(false);
 
             return input;
         }
@@ -45,8 +46,9 @@ namespace DEVinCar.GraphQL.Mutations
 
             await context.SaveChangesAsync();
 
-            await eventSender.SendAsync(VehicleType.Caminhonete, vehicle);
-            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicle).ConfigureAwait(false);
+            CaminhoneteViewModel vehicleviewModel = new(vehicle.Id, vehicle.NumeroChassi, vehicle.DataFabricacao, vehicle.Placa, vehicle.CpfComprador, vehicle.Nome, vehicle.Valor, vehicle.Cor, vehicle.Potencia, vehicle.Portas, vehicle.CapacidadeCacamba, vehicle.Gasolisa);
+            await eventSender.SendAsync(VehicleType.Caminhonete, (IVehicle)vehicleviewModel);
+            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicleviewModel).ConfigureAwait(false);
 
             return input;
         }
@@ -64,8 +66,10 @@ namespace DEVinCar.GraphQL.Mutations
 
             await context.SaveChangesAsync();
 
-            await eventSender.SendAsync(VehicleType.MotoTriciclo, vehicle);
-            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicle).ConfigureAwait(false);
+            MotoTricicloViewModel vehicleviewModel = new(vehicle.Id, vehicle.NumeroChassi, vehicle.DataFabricacao, vehicle.Placa, vehicle.CpfComprador, vehicle.Nome, vehicle.Valor, vehicle.Cor, vehicle.Potencia, vehicle.Rodas);
+
+            await eventSender.SendAsync(VehicleType.MotoTriciclo, (IVehicle)vehicleviewModel);
+            await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicleviewModel).ConfigureAwait(false);
 
             return input;
         }

@@ -1,12 +1,12 @@
 ﻿namespace DEVinCar.Models
 {
-    public class CreateSaleDTO
+    public class SaleDTO
     {
         public Sale Sale { get; set; }
 
         public IVehicle Vehicle { get; set; }
 
-        public CreateSaleDTO(Sale sale, IVehicle vehicle)
+        public SaleDTO(Sale sale, IVehicle vehicle)
         {
             Sale = sale;
             Vehicle = vehicle;

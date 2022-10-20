@@ -15,7 +15,7 @@ namespace DEVinCar.GraphQL.Subscriptions
 
         [Subscribe]
         [GraphQLName("VeiculoAdicionadoPorTipo")]
-        public IVehicle VehicleTypeAdded([Topic] VehicleType? tipo, [EventMessage] IVehicle message) => message;
+        public IVehicle VehicleTypeAdded([Topic] VehicleType tipo, [EventMessage] IVehicle message) => message;
 
     }
 }

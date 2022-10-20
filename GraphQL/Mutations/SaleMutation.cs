@@ -16,11 +16,11 @@ namespace DEVinCar.GraphQL.Mutations
     {
         [GraphQLName("VenderVeiculo")]
         [Authorize]
-        public async Task<CreateSaleDTO> AddVehicleSale(
+        public async Task<SaleDTO> AddVehicleSale(
             string idVehicle, long cpfComprador, DateTime dataVenda, [Service] ISaleRepository saleRepository,
             [Service] ITopicEventSender eventSender)
         {
-            CreateSaleDTO newSale = await saleRepository.AddVehicleSale(idVehicle, cpfComprador, dataVenda);
+            SaleDTO newSale = await saleRepository.AddVehicleSale(idVehicle, cpfComprador, dataVenda);
 
             await eventSender.SendAsync(newSale, newSale.Vehicle.Tipo);
             await eventSender.SendAsync(nameof(SalesSubscriptions.VehicleSale), newSale).ConfigureAwait(false);

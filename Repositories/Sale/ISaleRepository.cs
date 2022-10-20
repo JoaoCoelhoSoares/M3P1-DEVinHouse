@@ -4,13 +4,13 @@ namespace DEVinCar.Repositories
 {
     public interface ISaleRepository
     {
-        Task<CreateSaleDTO> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda);
+        Task<SaleDTO> AddVehicleSale(string idVehicle, long cpfComprador, DateTime dataVenda);
 
         IEnumerable<ISale> GetSales(VehicleType? vehicleType);
 
-        ISale GetHigherSale(VehicleType? vehicleType);
+        SaleDTO GetHigherSale(VehicleType? vehicleType);
 
-        ISale GetLowerSale(VehicleType? vehicleType);
+        SaleDTO GetLowerSale(VehicleType? vehicleType);
 
     }
 }

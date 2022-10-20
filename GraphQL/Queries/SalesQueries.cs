@@ -17,12 +17,12 @@ namespace DEVinCar.GraphQL.Queries
 
         [GraphQLName("MaiorPreco")]
         [GraphQLDescription("Retorna a venda de veículo com maior preço, podendo ser inserido um tipo específico de veículo (vehicleType) para retornar a maior venda daquele tipo")]
-        public ISale GetHigherSale([Service] ISaleRepository repository, VehicleType? vehicleType) => repository.GetHigherSale(vehicleType);
+        public SaleDTO GetHigherSale([Service] ISaleRepository repository, VehicleType? vehicleType) => repository.GetHigherSale(vehicleType);
 
         [GraphQLName("MenorPreco")]
         [GraphQLDescription("Retorna a venda de veículo com menor preço, podendo ser inserido um tipo específico de veículo (vehicleType) para retornar a menor venda daquele tipo")]
 
-        public ISale GetLowerSale([Service] ISaleRepository repository, VehicleType? vehicleType) => repository.GetLowerSale(vehicleType);
+        public SaleDTO GetLowerSale([Service] ISaleRepository repository, VehicleType? vehicleType) => repository.GetLowerSale(vehicleType);
 
     }
 }

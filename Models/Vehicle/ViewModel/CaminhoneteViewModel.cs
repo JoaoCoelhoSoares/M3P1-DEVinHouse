@@ -1,15 +1,11 @@
-﻿using HotChocolate.AspNetCore.Authorization;
-
-namespace DEVinCar.Models
+﻿namespace DEVinCar.Models
 {
-    public class Caminhonete : IVehicle
+    public class CaminhoneteViewModel : IVehicle
     {
         public string Id { get; set; }
-        [Authorize]
         public string NumeroChassi { get; set; }
         public DateTime DataFabricacao { get; set; }
         public string Nome { get; set; }
-        [Authorize]
         public string Placa { get; set; }
         public decimal Valor { get; set; }
         public long CpfComprador { get; set; }
@@ -20,21 +16,21 @@ namespace DEVinCar.Models
         public bool Gasolisa { get; set; }
         public int CapacidadeCacamba { get; set; }
 
-        public Caminhonete(string id, string nome, decimal valor, string cor, int potencia, int portas, int capacidadeCacamba, bool gasolisa = true)
+        public CaminhoneteViewModel(string id, string numeroChassi, DateTime dataFabricacao, string placa, long cpfComprador, string nome, decimal valor, string cor, int potencia, int portas, int capacidadeCacamba, bool gasolisa)
         {
             Portas = portas;
             Gasolisa = gasolisa;
             CapacidadeCacamba = capacidadeCacamba;
             Id = id;
-            NumeroChassi = IVehicle.ChassiGenerator();
-            DataFabricacao = DateTime.Now.AddDays(-1);
+            NumeroChassi = numeroChassi;
+            DataFabricacao = dataFabricacao;
             Nome = nome;
-            Placa = IVehicle.PlacaGenerator();
+            Placa = placa;
             Valor = valor;
             Cor = cor;
             Potencia = potencia;
             Tipo = "Caminhonete";
-            CpfComprador = 0;
+            CpfComprador = cpfComprador;
         }
     }
 }
