@@ -67,7 +67,6 @@ namespace DEVinCar.GraphQL.Mutations
             await context.SaveChangesAsync();
 
             MotoTricicloViewModel vehicleviewModel = new(vehicle.Id, vehicle.NumeroChassi, vehicle.DataFabricacao, vehicle.Placa, vehicle.CpfComprador, vehicle.Nome, vehicle.Valor, vehicle.Cor, vehicle.Potencia, vehicle.Rodas);
-
             await eventSender.SendAsync(VehicleType.MotoTriciclo, (IVehicle)vehicleviewModel);
             await eventSender.SendAsync(nameof(VehiclesSubscriptions.VehicleAdded), (IVehicle)vehicleviewModel).ConfigureAwait(false);
 
